@@ -66,41 +66,43 @@ Then turn on both of those Settings and click "Save Changes". Then you are done 
 
 ## ⚙️ Configurations
 
-- edit in `config.json`
+- edit in `config.js`
 
 ```js
-      "discord_client": {
-    "id": "BOT_ID_HERE",
-    "token": "TOKEN_HERE",
-    "secret": "SECRET_HERE",
-    "prefix": "PREFIX"
-  },
-  "web": {
-    "domain_with_protocol": "http://localhost",
-    "port": 80,
-    "ratelimit": 100,
-    "recaptcha_v2": {
-      "site_key": "SITE_KEY_HERE",
-      "secret_key": "SECRET_KEY_HERE"
-    }
-  },
-  "mongo_url": "MONGO_URL",
-  "server": {
-    "id": "SERVER_ID_HERE",
-    "invite": "https://discord.gg/fbJFAs43vD",
-    "like_log": "VOTE__CHANNEL_ID_HERE",
-    "botOwners": "OWNER_ID_HERE",
-    "mod_log_id": "MOD__CHANNEL_ID_HERE",
-    "website_logs": "WEBSITE__CHANNEL_ID_HERE",
-    "admin_user_ids": ["ADMIN_ID_HERE"],
-    "role_ids": {
-      "bot": "BOT_ROLE_ID_HERE",
-      "bot_verifier": "BOT_VERIFIER_ROLE_ID_HERE",
-      "bot_developer": "BOT_DEVELOPPER_ROLE_ID_HERE",
-      "cert_user": "CERTIF_USER_ROLE_ID_HERE",
-      "cert_bot": "CERTIF_BOT_ROLE_ID_HERE"
+bot: {
+    token: "TOKEN_HERE", // Bot List Bot Token
+    prefix: "PREFIX",
+    owners: ["OWNERS_ID", "OWNERS_ID"],
+    mongourl: "MONGO_URL", //https://mongodb.com/cloud/atlas/register
+    servers: {
+      token: "TOKEN_HERE", // Server List Bot Token
+      prefix: "PREFIX",
     },
-    "botreviewer": ["REVIEWER_ID_HERE"]
+  },
+  server: {
+    id: "SERVER_ID_HERE",
+    invite: "https://discord.gg/erfB647CVm",
+    roles: {
+      administrator: "ADMIN_ID_HERE",
+      moderator: "MODERATOR_ID_HERE",
+      profile: {
+        sitecreator: "OWNER_ID_HERE",
+        booster: "BOOSTER_ID_HERE",
+        sponsor: "SPONSOR_ID_HERE",
+        supporter: "SUPPORT_ID_HERE",
+        partnerRole: "PARTNER_ID_HERE",
+      },
+      botlist: {
+        developer: "BOT_DEVELOPPER_ROLE_ID_HERE",
+        certified_developer: "CERTIF_USER_ROLE_ID_HERE",
+        bot: "BOT_ROLE_ID_HERE",
+        certified_bot: "CERTIF_BOT_ROLE_ID_HERE",
+      },
+    },
+    channels: {
+      botlog: "WEBSITE__CHANNEL_ID_HERE",
+      votes: "VOTE__CHANNEL_ID_HERE",
+    },
   },
 ```
 

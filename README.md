@@ -8,16 +8,18 @@
 
 - ✅ Certified Bot
 - ✅ Top Bot
+- ✅ Top Server
 - ✅ Admin Page
 - ✅ Bot Tags
-- ✅ And much more!
+- ✅ Server Tags
 - ✅ Server count API
 - ✅ Support MARKDOWN descriptions
 - ✅ Support HTML descriptions
+- ✅ And much more!
 
 ## 📎 Requirements
 
-- [Nodejs](https://nodejs.org/download/release/v16.18.1/) v16 and more
+- [Nodejs](https://nodejs.org/download/release/v18.13.0/) v18 and more
 - [Discord.js](https://github.com/discordjs/discord.js/) v13
 
 ### 🌐 Main
@@ -26,7 +28,6 @@
   token `You should know why you need this or you won't go to this repo` [Get or create bot here](https://discord.com/developers/applications)
 - Mongodb
   URI `for custom prefix` [MongoDB](https://account.mongodb.com/account/login)
-- Your ID `for eval command. It's dangerous if eval accessible to everyone`
 - Configure your Recaptcha [Recaptcha](https://www.google.com/recaptcha/admin/create)
 
 ## 🚀 Installation from source

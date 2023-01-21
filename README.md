@@ -33,8 +33,7 @@
 ## 🚀 Installation from source
 
 ```bash
-git clone https://github.com/LucasB25/Eagle-Bot-List-v2
-.git
+git clone https://github.com/LucasB25/Eagle-Bot-List-v2.git
 ```
 
 After cloning, run

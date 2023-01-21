@@ -109,10 +109,6 @@ bot: {
 
 <!-- ABOUT THE PROJECT -->
 
-## 🌀 About
-
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=LucasB25&repo=Eagle-Bot-List-v2&theme=tokyonight)](https://github.com/LucasB25/Eagle-Bot-List-v2)
-
 ## 💌 Support Server
 
 [![DiscordBanner](https://invidget.switchblade.xyz/fbJFAs43vD)](https://discord.gg/fbJFAs43vD)<br />

@@ -1,0 +1,137 @@
+<%- include('../parts/head', {bot, user, path}) %>
+  <style>
+    .form-control {
+      background-color: var(--form-input);
+      color: var(--input-color);
+      border: none;
+    }
+
+    .form-control:focus {
+      background-color: var(--form-input);
+      color: var(--input-color);
+      border: 3px solid var(--button-green);
+    }
+
+    label {
+      color: var(--label-color) !important;
+    }
+
+    input[type="text"]:disabled {
+      background-color: var(--form-input);
+      color: gray;
+      border: none;
+      cursor: not-allowed;
+    }
+  </style>
+  <br><br>
+  <div class="container p-4">
+    <script>
+      $(function () {
+        var txt = $("input#botID");
+        var func = function () {
+          txt.val(txt.val().replace(/\s/g, ''));
+        }
+        txt.keyup(func).blur(func);
+      });
+    </script>
+    <form method="POST">
+      <div style="left: auto;">
+        <div class="col-span-3 center card-bodycertif bg-vote-panais">
+          <div class="form-group">
+            <label><i class="fad fa-fingerprint"></i> Bot ID</label><small><span class="text-danger"> (Required)</span></small>
+            <input type="text" name="botID" id="botID" class="form-control" placeholder="746673633551974456"
+              required="required" value="" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-user-crown"></i> Owner ID <small style="font-size: 12px;"
+                class="title_divider_text">Your id is written automatically.</small></label>
+            <input type="text" name="ownerID" id="ownerID" class="form-control" placeholder="Bot Sahibi"
+              value="<%= user.id %>" required="required" disabled />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-users"></i> Co-Owners</label>
+            <input type="text" name="coowners" id="coowners" class="form-control" placeholder="id,id2,id3" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-terminal"></i> Prefix</label><small><span class="text-danger"> (Required)</span></small>
+            <input type="text" name="prefix" id="prefix" class="form-control" placeholder="!" required="required" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fab fa-google"></i> Website</label>
+            <input type="text" name="website" id="website" class="form-control" placeholder="http://localhost" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fab fa-discord"></i> Support Server</label>
+            <input type="text" name="support" id="support" class="form-control"
+              placeholder="http://localhost/dc" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fab fa-github"></i> Github Repository</label>
+            <input type="text" name="github" id="github" class="form-control"
+              placeholder="https://github.com/consteagle-com/issues" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-image"></i> Background Image</label>
+            <input type="text" name="background" id="background" class="form-control" placeholder="" />
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-text"></i> Short Description</label><small><span class="text-danger"> (Required)</span></small>
+            <input name="shortDesc" id="shortDesc" class="form-control" placeholder="Short Description" minlength="30" maxlength="200" required="required">
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-align-justify"></i> Long Description</label><small><span class="text-danger"> (Required)</span></small>
+              <p class="text-muted">(Html supported but markdown not supported) Max 20000 length</p>
+            </label>
+            <textarea name="longDesc" id="longDesc" class="form-control" minlength="300" maxlength="20000" required="required"
+              style="width: 100%; height: 300px;"></textarea>
+          </div><br>
+          <div class="form-group">
+            <label><i class="fad fa-tags"></i> Tags</label><small><span class="text-danger"> (Required)</span></small>
+            <select name="tags" id="tags" multiple required>
+              <% config.website.tags.map(a=> {%>
+                <option value="<%= a %>">
+                  <%= a %>
+                </option>
+                <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br>
+      <center>
+        <button type="submit" name="btnSubmit" class="btn btn-panais"><i class="fal fa-paper-plane"></i> Submit</button>
+        </center>
+    </form>
+  </div>
+  </div>
+  <br><br>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success') && urlParams.get('success')) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Succesfull...',
+        closeOnConfirm: false,
+        text: urlParams.get('message'),
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `/bot/${urlParams.get('botID')}`;
+        }
+      })
+    }
+    if (urlParams.has('error') && urlParams.get('error')) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: urlParams.get('message'),
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '/addbot';
+        }
+      })
+    }
+  </script>
+
+  <%- include('../parts/foot') %>

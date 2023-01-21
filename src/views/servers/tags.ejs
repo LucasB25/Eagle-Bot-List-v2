@@ -1,0 +1,41 @@
+<%- include('../parts/head', {bot, user, path}) %>
+
+<div class="mt-5 container">
+  <div class="column">
+    <p style="margin-bottom: 0px;" class="has-text-white title is-large">Currently Popular Tags</p>
+    <h4 class="tag-text" >Tags that users are using the most!</h4>
+  </div>
+  <br><br><br><br>
+  <div style="margin-top: -5.5%;" class="container">
+      <div class="home-tags">
+      <% config.website.servers.tags.map(a => {%>
+              <a translate="no" style="margin: 5px;" href="/servers/tag/<%=a.name %>" class="btn btn-panais">
+                <%= a.name %>
+                <span class="tag-text" style="font-size: 15px"> 0000</span>
+               </a>
+            <% }) %>
+          </div>
+      </div>
+</div>
+
+    <div class="mt-5 container">
+        <div class="column">
+          <p style="margin-bottom: 0px;" class="has-text-white title is-large">All Tags</p>
+          <h4 class="tag-text" >A list of all the pre-defined tags currently on our site!</h4>
+        </div>
+        <br><br><br><br>
+        <div style="margin-top: -5.5%;" class="container">
+            <div class="home-tags">
+            <% config.website.servers.tags.map(a => {%>
+                    <a translate="no" style="margin: 5px;" href="/servers/tag/<%=a.name %>" class="btn btn-panais">
+                      <%= a.name %>
+                      <span class="tag-text" style="font-size: 15px"> 0000</span>
+                     </a>
+                  <% }) %>
+                </div>
+            </div>
+</div>
+<center>
+ </div>
+</center>
+<%- include('../parts/foot') %>

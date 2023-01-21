@@ -1,0 +1,45 @@
+<%- include('../../parts/head', {bot, user, path}) %>
+<title>Certification | Discord Bots</title>
+<br><br><br>
+<div class="col-md-6 center">
+    <div class="card mb-4">
+          <h5 class="card-certif">Requirements</h5>
+          <div class="card-bodycertif bg-vote-panais">
+            <p class="mb-0">
+              • Your bot must follow Discord's <a href="https://discord.com/guidelines" target="_blank" class="text-purple">Guidelines</a> and <a href="https://discord.com/terms" target="_blank" class="text-purple">Terms of Service</a>.<br>
+              • Your bot must be on the list for at least <code>12 days</code>.<br>
+              • Your bot must have at least <code>300 servers</code> at time of applying.<br>
+              • Your bot should automatically post server count using our API.<br>
+              • It must not have been forked from another existing project.<br>
+              • It must be hosted 24/7. Only short downtimes are accepted to perform minor maintenance or fix errors.<br>
+              • It must have a site, or a GitHub repository that provides very clear documentation about the bot's features.<br>
+              • It must have original features.<br>
+            </p>
+          </div>  
+        </div>
+        <br>
+        <div class="card mb-4">
+          <h5 class="card-certif">Perks</h5>
+          <div class="card-bodycertif bg-vote-panais">
+            <p class="mb-0">
+              For bots:<br>
+              • A special role on our Discord server to let people know that it's certified.<br>
+              • A special badge(                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_bot).name%>" data-tooltip-location="top"> 
+                <i class="fad fa-badge-check has-text-primary" style="font-size: 20px;"></i>
+                </span>) on your bot card to let people know that it's certified.<br><br>
+              For bots developers:<br>
+              • A special role on our Discord server to let people know that you are certified.<br>
+              • A special badge(                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_developer).name%>" data-tooltip-location="top"> 
+                <i class="fad fa-badge-check" style="color: <%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_developer).hexColor%>;font-size: 20px;"></i>
+                </span>) on your profile to let people know that you are certified.<br>
+            </p>
+          </div>
+        </div>
+      </div><br>
+
+    <center>
+    <button onclick="location.href='/certification/apply'" class="btn btn-panais"><i class="fad fa-check"></i>&nbsp;Apply your bot</button>
+    </center>
+</div>
+
+<%- include('../../parts/foot') %>

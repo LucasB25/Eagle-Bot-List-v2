@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      href="http://<%- req.get('host') %>/img/logo.webp"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="http://<%- req.get('host') %>/img/logo.webp"
+      type="image/x-icon"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Website",
+        "url": "http://<%- req.get('host') %>/"
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="publisher" content="2023, Eagle-Bot-List" />
+    <meta name="author" content="Panais Development",
+    "https://discord.gg/CNrBQyeMaV">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3366FF" />
+    <link
+      rel="icon"
+      href="http://<%- req.get('host') %>/img/logo.webp"
+      type="image/x-icon"
+    />
+
+    <meta name="twitter:image" content="../../img/logo.webp" />
+    <link rel="canonical" href="http://<%- req.get('host') %>/" />
+
+    <meta name="googlebot" content="index" />
+    <meta name="googlebot-news" content="snippet" />
+    <meta name="robots" content="follow" />
+    <meta name="publisher" content="2023, Eagle-Bot-List" />
+    <meta name="author" content="Panais Development",
+    "https://discord.gg/CNrBQyeMaV">
+    <!-- Links -->
+    <%- include('./links.ejs') %>
+  </head>
+
+  <body></body>
+</html>

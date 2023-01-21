@@ -1,0 +1,123 @@
+<%- include('../parts/head', {bot, user, path}) %>
+<style>
+.form-control {
+  background-color: var(--form-input);
+  color: var(--input-color);
+  border: none;
+}
+.form-control:focus {
+  background-color: var(--form-input);
+  color: var(--input-color);
+  border: 3px solid var(--button-green);
+}
+  label {
+    color: var(--label-color)!important;
+  }
+input[type="text"]:disabled {
+  background-color: var(--form-input);
+  color: gray;
+  border: none;
+  cursor: not-allowed;
+}
+</style>
+  <br><br>
+<div class="container p-4">
+<div class="p-5">
+    <p class="is-size-3 has-text-white d-flex-not-phone justify-content-center">
+        Are you being told to add bot?&nbsp;<a href="https://discord.com/oauth2/authorize?client_id=859032556803588096&permissions=8&scope=bot%20applications.commands" class="btn btn-panais p-3">Click Here!</a>
+    </p>
+</div>
+  <script>
+        $(function() {
+        var txt = $("input#guildID");
+        var func = function() {
+            txt.val(txt.val().replace(/\s/g, ''));
+        }
+        txt.keyup(func).blur(func);
+    });
+  </script>
+  <form method="POST">
+     <div class="row">
+          <div class="col-span-3 center card-bodycertif bg-vote-panais">
+              <div class="form-group">
+                <label><i class="fad fa-fingerprint"></i> Server ID</label><small><span class="text-danger"> (Required)</span></small>
+                  <input type="text" name="guildID" id="guildID" class="form-control" placeholder="796048327024050176" required="required" value="" />
+              </div><br>
+              <div class="form-group">
+                <label><i class="fab fa-discord"></i> Server Invite</label><small><span class="text-danger"> (Required)</span></small>
+                 <input type="text" name="link" id="link" class="form-control" placeholder="https://discord.gg/z7dBzygse4"/>
+              </div><br>
+            <div class="form-group">
+                <label><i class="fad fa-text"></i> Short Description</label><small><span class="text-danger"> (Required)</span></small>
+                 <input name="shortDesc" id="shortDesc" class="form-control" placeholder="Short Description" minlength="30" maxlength="200" required="required">
+              </div><br>
+            <div class="form-group">
+                <label><i class="fad fa-align-justify"></i> Long Description</label><small><span class="text-danger"> (Required)</span></small>
+                <p class="text-muted">(Html supported but markdown not supported) Max 20000 length</p>
+                </label>
+                  <textarea name="longDesc" id="longDesc" class="form-control" minlength="300" maxlength="20000" required="required" style="width: 100%; height: 300px;"></textarea>
+              </div><br>
+              <div class="form-group">
+                <label><i class="fad fa-tags"></i> Tags</label><small><span class="text-danger"> (Required)</span></small>
+                 <select name="tags" translate="no" id="tags" multiple required>
+                   <% config.website.servers.tags.map(a => {%>
+                     <option value="<%= a.name %>" translate="no"><%= a.name %></option>
+                  <% }); %>
+               </select>
+               </div>
+           </div>
+
+            </div>
+      </div> 
+      <center>
+      <button type="button" name="btnSubmit" onclick="clickOnAdd()" id="myButton" class="btn btn-panais"><i class="fal fa-paper-plane"></i> Submit</button>
+      </center>
+    </form>
+</div>
+</div>
+<br><br>
+<script>
+function clickOnAdd() {
+    $("#myButton").attr("disabled", true);
+    $("#myButton").html('<i class="p-2 fad fa-spinner fa-w-16 fa-pulse fa-lg"></i>');
+    setTimeout(() => {
+        $.post("/server/add", {
+                guildID: $('#guildID').val(),
+                wallpaper: $('#background').val(),
+                tags: $('#tags').val(),
+                longDesc: $('#longDesc').val(),
+                shortDesc: $('#shortDesc').val(),
+                link: $('#link').val(),
+                autoCreate: $('#createForMe').prop('checked')
+            })
+            .done(function(data) {
+                if (data.error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        closeOnConfirm: false,
+                        text: data.message,
+                    })
+                    $("#myButton").html('<i class="fal fa-paper-plane"></i>&nbsp;Submit');
+                    $("#myButton").attr("disabled", false);
+                    return;
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Nice...',
+                        closeOnConfirm: false,
+                        text: data.message,
+                    })
+                    $("#myButton").html('<i class="fal fa-paper-plane"></i>&nbsp;Submit');
+                    $("#myButton").attr("disabled", false);
+                    return;
+                }
+            });
+    }, 2000)
+}
+</script>
+<style>
+    @media screen and (max-width: 922px) { .d-flex-not-phone { display: block!important } }
+    .d-flex-not-phone { display: flex };
+</style>
+<%- include('../parts/foot') %>

@@ -1,0 +1,66 @@
+<%- include('../../parts/head', {bot, user, path}) %>
+<style>
+label {
+  color: var(--label-color)!important;
+}
+</style>
+<br><br><br>
+<form method="post">
+<div class="col-md-6 bg-vote-panais center">
+  <div class="form-group">
+    <label class="mb-1">Is the bot over 300+ servers?</label>
+    <select class="form-control" name="onehundred" id="onehundred" required disabled>
+      <option value="Yes" selected>Yes</option>
+      <option value="No">No</option>
+  </select>   
+    <small class="form-text text-muted">Since you are applying, your bot should already have 300+ servers. <span class="text-danger"> (Required)</span></small>
+  </div>
+  <div class="form-group">
+    <label class="mb-1">Select Bot</label>
+    <select class="form-control" name="bot" id="bot" required>
+      <% userbots.map(a => {%>
+        <option value="<%= a.botID %>"><%= a.username %></option>
+     <% }); %>
+    </select>
+    <small class="form-text text-muted"><span class="text-danger"> (Required)</span></small>
+  </div>
+  <div class="form-group">
+    <label class="mb-1">What makes your bot different?</label>
+    <textarea class="form-control" style="height:120px;" minlength="100" maxlength="1000" id="botdiff" required=""></textarea>
+    <small class="form-text text-muted">What makes it unique? Please provide proof. Max 1000 length <span class="text-danger">(Required)</span></small>
+  </div>
+</div><br>
+
+    <center>
+    <button type="submit" name="btnSubmit" class="btn btn-panais"><i class="fad fa-save"></i> Submit</button>
+    </center>
+  </form></div>
+</div>
+</div>
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('success') && urlParams.get('success')){
+    Swal.fire({
+     icon: 'success',
+     title: 'Succesfull...',
+     closeOnConfirm: false,
+     text: urlParams.get('message'),
+    }).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = `/bot/${urlParams.get('botID')}`;
+  }
+})
+    }
+    if(urlParams.has('error') && urlParams.get('error')){
+    Swal.fire({
+     icon: 'error',
+     title: 'Oops...',
+     text: urlParams.get('message'),
+    }).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = '/addbot';
+  }    
+})
+    }
+   </script>
+<%- include('../../parts/foot') %>

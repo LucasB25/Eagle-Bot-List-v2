@@ -33,7 +33,8 @@
 ## 🚀 Installation from source
 
 ```bash
-git clone https://github.com/LucasB25/Eagle-Bot-List.git
+git clone https://github.com/LucasB25/Eagle-Bot-List-v2
+.git
 ```
 
 After cloning, run
@@ -134,7 +135,7 @@ bot: {
 - Distributed under the Apache-2.0 license License. See [`LICENSE`](https://github.com/LucasB25/Eagle-Bot-List-v2/blob/main/LICENSE) for more information.
 - You must leave the mention of Panais development, in the footer.
 
-[contributors-shield]: https://img.shields.io/github/contributors/LucasB25/Eagle-Bot-List.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/LucasB25/Eagle-Bot-List-v2.svg?style=for-the-badge
 [contributors-url]: https://github.com/LucasB25/Eagle-Bot-List-v2/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/LucasB25/Eagle-Bot-List-v2.svg?style=for-the-badge
 [forks-url]: https://github.com/LucasB25/Eagle-Bot-List-v2/network/members
